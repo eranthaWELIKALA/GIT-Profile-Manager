@@ -15,7 +15,7 @@ The Git Profile Manager is a tool designed to manage multiple Git profiles on a 
 - [Git](https://gitforwindows.org/) must be installed.
 
 ### Using the Installer
-[Download Git Profile Manager Installer](https://github.com/eranthaWELIKALA/Windows-GIT-Profile-Manager/blob/353d4d084b300ecd531b0b4dcc055eebae10b04f/output/GitProfileManagerInstaller.exe)
+[Download Git Profile Manager Installer](https://github.com/eranthaWELIKALA/Windows-GIT-Profile-Manager/raw/353d4d084b300ecd531b0b4dcc055eebae10b04f/output/GitProfileManagerInstaller.exe)
 
 1. Run the `GitProfileManagerInstaller.exe`.
 2. Follow the installation instructions.
