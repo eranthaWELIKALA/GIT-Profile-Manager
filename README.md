@@ -9,7 +9,7 @@ The Git Profile Manager is a tool designed to manage multiple Git profiles on a 
 - Add existing Git profiles to the configuration.
 - Easy-to-use command-line interface.
 
-## Installation
+## Windows Installation
 
 ### Prerequisites
 - [Git](https://gitforwindows.org/) must be installed.
@@ -20,14 +20,25 @@ The Git Profile Manager is a tool designed to manage multiple Git profiles on a 
 1. Run the `GitProfileManagerInstaller.exe`.
 2. Follow the installation instructions.
 
-### Commands
+## Mac Installation
+
+### Using the Installer
+[Download Git Profile Manager Installer](https://github.com/eranthaWELIKALA/GIT-Profile-Manager/raw/main/mac/git-profile-manager-dmg/installer/GitProfileManager.dmg)
+
+1. Run the `GitProfileManager.dmg`.
+2. Double click on the `install.command`.
+
+## Linux Installation
+`Implementation in progress`
+
+## Commands
 The Git Profile Manager uses a single command with different flags to perform its operations.
 
 - **Create a new Git profile**:
   ```sh
-  git-profile-manager.bat create
+  git-profile-manager create
   ```
 - **Add a Git profile to the Configs**:
   ```sh
-  git-profile-manager.bat add
+  git-profile-manager add
   ```
