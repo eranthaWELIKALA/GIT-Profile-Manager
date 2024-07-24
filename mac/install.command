@@ -1,34 +1,35 @@
 #!/bin/bash
 
-# Define the installation directory
+# Set the installation directory
 INSTALL_DIR="$HOME/.git-profile-manager"
-SCRIPT_NAME="git-profile-manager.sh"
 
 # Create the installation directory if it doesn't exist
 mkdir -p "$INSTALL_DIR"
 
-# Copy the script to the installation directory
-cp "$SCRIPT_NAME" "$INSTALL_DIR/"
+# Copy the scripts to the installation directory
+cp "$(dirname "$0")/git-profile-manager.sh" "$INSTALL_DIR/"
+cp "$(dirname "$0")/install.sh" "$INSTALL_DIR/"
 
-# Make the script executable
-chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
+# Make the scripts executable
+chmod +x "$INSTALL_DIR/git-profile-manager.sh"
+chmod +x "$INSTALL_DIR/install.sh"
 
 # Add the installation directory to the PATH if it's not already there
-if ! echo "$PATH" | grep -q "$INSTALL_DIR"; then
-    echo "Adding $INSTALL_DIR to PATH in .bashrc and .zshrc..."
+SHELL_PROFILE=""
 
-    # Add to .bashrc
-    echo "export PATH=\"$INSTALL_DIR:\$PATH\"" >> "$HOME/.bashrc"
-
-    # Add to .zshrc
-    echo "export PATH=\"$INSTALL_DIR:\$PATH\"" >> "$HOME/.zshrc"
-
-    # Source the appropriate file to update the current shell session
-    if [ -n "$BASH_VERSION" ]; then
-        source "$HOME/.bashrc"
-    elif [ -n "$ZSH_VERSION" ]; then
-        source "$HOME/.zshrc"
-    fi
+if [ -n "$BASH_VERSION" ]; then
+    SHELL_PROFILE="$HOME/.bashrc"
+elif [ -n "$ZSH_VERSION" ] || [ "$SHELL" = "/bin/zsh" ]; then
+    SHELL_PROFILE="$HOME/.zshrc"
+else
+    echo "Unsupported shell. Please add $INSTALL_DIR to your PATH manually."
+    exit 1
 fi
 
-echo "Installation complete. You can now run '$SCRIPT_NAME' from anywhere."
+if ! grep -q "$INSTALL_DIR" "$SHELL_PROFILE"; then
+    echo "Adding $INSTALL_DIR to PATH in $SHELL_PROFILE..."
+    echo "export PATH=\"$INSTALL_DIR:\$PATH\"" >> "$SHELL_PROFILE"
+    source "$SHELL_PROFILE"
+fi
+
+echo "Installation complete. You can now run 'git-profile-manager.sh' from anywhere."
