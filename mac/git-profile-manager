@@ -11,14 +11,14 @@ fi
 create_profile() {
     echo "Creating a new Git profile..."
     # Include your git-profile-create script logic here
-    ./git-profile-create.sh
+    git-profile-create.sh
     return 0
 }
 
 add_profile() {
     echo "Adding an existing Git profile..."
     # Include your git-profile-add script logic here
-    ./git-profile-add.sh
+    git-profile-add.sh
     return 0
 }
 
