@@ -42,3 +42,7 @@ The Git Profile Manager uses a single command with different flags to perform it
   ```sh
   git-profile-manager add
   ```
+
+  
+> [!IMPORTANT]
+> **Make sure to add SSH remote URL as remotes. This solution works only with SSH URLs**
