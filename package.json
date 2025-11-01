@@ -1,0 +1,43 @@
+{
+  "name": "git-profile-manager",
+  "version": "1.0.0",
+  "description": "The Git Profile Manager is a tool designed to manage multiple Git profiles on a single machine. It allows you to create new Git profiles, add existing profiles to the configuration, and manage them effortlessly.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "keywords": ["git", "profile", "manager", "ssh"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.gitprofilemanager.app",
+    "productName": "Git Profile Manager",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": ["dmg"]
+    },
+    "win": {
+      "target": ["nsis"]
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Development"
+    }
+  }
+}

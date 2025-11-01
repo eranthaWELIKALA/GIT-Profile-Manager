@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Profile Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Git Profile Manager</h1>
+      <p class="subtitle">Manage multiple Git profiles seamlessly</p>
+    </header>
+
+    <div class="git-check" id="gitCheck">
+      <div class="loading-spinner"></div>
+      <p>Checking Git installation...</p>
+    </div>
+
+    <main id="mainContent" style="display: none;">
+      <div class="tabs">
+        <button class="tab-button active" data-tab="create">Create Profile</button>
+        <button class="tab-button" data-tab="add">Add to Repository</button>
+        <button class="tab-button" data-tab="profiles">My Profiles</button>
+      </div>
+
+      <div class="tab-content active" id="createTab">
+        <div class="card">
+          <h2>Create New Git Profile</h2>
+          <form id="createProfileForm">
+            <div class="form-group">
+              <label for="repoPath">Repository Path (Optional)</label>
+              <div class="input-with-button">
+                <input type="text" id="repoPath" placeholder="Select a Git repository">
+                <button type="button" id="selectRepoBtn" class="secondary-btn">Browse</button>
+              </div>
+              <small id="repoStatus" class="status-text"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="gitUserName">Git Username <span class="required">*</span></label>
+              <input type="text" id="gitUserName" required placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" required placeholder="your.email@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="profileName">Profile Name <span class="required">*</span></label>
+              <input type="text" id="profileName" required placeholder="work, personal, etc." pattern="[a-zA-Z0-9]+">
+              <small>Only letters and numbers allowed</small>
+            </div>
+
+            <button type="submit" class="primary-btn">Create Profile</button>
+          </form>
+
+          <div id="createResult" class="result-box" style="display: none;"></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="addTab">
+        <div class="card">
+          <h2>Add Profile to Repository</h2>
+          <form id="addProfileForm">
+            <div class="form-group">
+              <label for="addRepoPath">Repository Path <span class="required">*</span></label>
+              <div class="input-with-button">
+                <input type="text" id="addRepoPath" required placeholder="Select a Git repository">
+                <button type="button" id="addSelectRepoBtn" class="secondary-btn">Browse</button>
+              </div>
+              <small id="addRepoStatus" class="status-text"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="selectProfile">Select Profile <span class="required">*</span></label>
+              <select id="selectProfile" required>
+                <option value="">-- Select a profile --</option>
+              </select>
+            </div>
+
+            <button type="submit" class="primary-btn">Apply to Repository</button>
+          </form>
+
+          <div id="addResult" class="result-box" style="display: none;"></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="profilesTab">
+        <div class="card">
+          <h2>My Git Profiles</h2>
+          <div id="profilesList" class="profiles-list">
+            <div class="loading-spinner"></div>
+            <p>Loading profiles...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
