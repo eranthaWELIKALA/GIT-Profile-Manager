@@ -17,8 +17,7 @@ function createWindow() {
       contextIsolation: false
     },
     backgroundColor: '#1a1a1a',
-    titleBarStyle: 'default',
-    icon: path.join(__dirname, 'assets', 'icon.png')
+    titleBarStyle: 'default',icon: path.join(__dirname, 'build/icons/icon.png'),
   });
 
   mainWindow.loadFile(path.join(__dirname, 'index.html'));

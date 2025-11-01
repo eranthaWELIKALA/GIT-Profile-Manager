@@ -8,15 +8,20 @@
     "build": "electron-builder",
     "build:win": "electron-builder --win",
     "build:mac": "electron-builder --mac",
-    "build:linux": "electron-builder --linux"
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder -mwl"
   },
-  "keywords": ["git", "profile", "manager", "ssh"],
-  "author": "",
+  "keywords": [
+    "git",
+    "profile",
+    "manager",
+    "ssh"
+  ],
+  "author": {
+    "name": "Erantha Welikala",
+    "email": "eranthawelikala@gmail.com"
+  },
   "license": "ISC",
-  "dependencies": {
-    "electron": "^39.0.0",
-    "electron-builder": "^26.0.12"
-  },
   "build": {
     "appId": "com.gitprofilemanager.app",
     "productName": "Git Profile Manager",
@@ -24,20 +29,37 @@
       "output": "dist"
     },
     "files": [
+      "build/**/*",
       "src/**/*",
       "node_modules/**/*",
       "package.json"
     ],
-    "mac": {
-      "category": "public.app-category.developer-tools",
-      "target": ["dmg"]
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "build/icons/icon.png",
+      "category": "Development"
     },
     "win": {
-      "target": ["nsis"]
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "build/icons/icon.ico"
     },
-    "linux": {
-      "target": ["AppImage", "deb"],
-      "category": "Development"
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "build/icons/icon.icns"
     }
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.12"
   }
 }
